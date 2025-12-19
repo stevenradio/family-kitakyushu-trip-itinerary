@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 北九州之旅 | Discover Kitakyushu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #6B8E7B;
+            --sage-dark: #4A6B5A;
+            --sage-light: #8FB09F;
+            --cream: #F5F2EB;
+            --sand: #C4B8A5;
+            --sand-dark: #8B7355;
+            --terracotta: #D4845C;
+            --text-dark: #2C3E35;
+            --text-light: #5A6B62;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 80 Q30 60 40 70 Q50 80 60 65 Q70 50 80 55 Q90 60 100 50' stroke='%23ffffff10' fill='none' stroke-width='0.5'/%3E%3C/svg%3E") repeat;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero .dates {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            color: var(--white);
+            font-size: 0.95rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            z-index: 100;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .nav-inner {
+            display: flex;
+            padding: 0.5rem;
+            gap: 0.5rem;
+            min-width: max-content;
+        }
+
+        .nav a {
+            flex-shrink: 0;
+            padding: 0.7rem 1rem;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav a:hover, .nav a.active {
+            background: var(--sage);
+            color: var(--white);
+        }
+
+        /* Fast Facts */
+        .fast-facts {
+            padding: 3rem 1.5rem;
+            background: var(--white);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--sage-dark);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .fact-card {
+            background: var(--cream);
+            padding: 1.2rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .fact-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .fact-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.3rem;
+        }
+
+        .fact-value {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Hotels Section */
+        .hotels {
+            padding: 3rem 1.5rem;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+        }
+
+        .hotel-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .hotel-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .hotel-day {
+            background: var(--sage);
+            color: var(--white);
+            padding: 0.5rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .hotel-info h3 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .hotel-info p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Day Section */
+        .day-section {
+            padding: 3rem 1.5rem;
+            scroll-margin-top: 60px;
+        }
+
+        .day-section:nth-child(odd) {
+            background: var(--white);
+        }
+
+        .day-section:nth-child(even) {
+            background: var(--cream);
+        }
+
+        .day-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .day-number {
+            display: inline-block;
+            background: var(--sage);
+            color: var(--white);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .day-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--sage-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .day-subtitle {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .day-weather {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(107,142,123,0.1);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--sage-dark);
+            margin-top: 0.8rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--sage) 0%, var(--sage-light) 100%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.3rem;
+            width: 10px;
+            height: 10px;
+            background: var(--sage);
+            border-radius: 50%;
+            border: 2px solid var(--white);
+            box-shadow: 0 0 0 3px var(--sage-light);
+        }
+
+        .timeline-time {
+            font-size: 0.8rem;
+            color: var(--sage-dark);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .day-section:nth-child(odd) .timeline-content {
+            background: var(--cream);
+        }
+
+        .timeline-activity {
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-note {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Restaurant Cards */
+        .restaurants {
+            margin-top: 2rem;
+        }
+
+        .restaurants-title {
+            font-size: 1.1rem;
+            color: var(--sage-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .restaurant-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .day-section:nth-child(odd) .restaurant-card {
+            background: var(--cream);
+        }
+
+        .restaurant-name {
+            font-size: 1rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .restaurant-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .restaurant-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .restaurant-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Spots Section */
+        .spots {
+            margin-top: 2rem;
+        }
+
+        .spot-card {
+            background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .spot-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .spot-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .spot-time {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        /* Must Try Section */
+        .must-try {
+            margin-top: 2rem;
+        }
+
+        .must-try-title {
+            font-size: 1.1rem;
+            color: var(--terracotta);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .must-try-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .must-try-item {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .day-section:nth-child(odd) .must-try-item {
+            background: var(--cream);
+        }
+
+        .must-try-emoji {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .must-try-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .must-try-desc {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--sage-dark);
+            color: var(--white);
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-tips {
+            max-width: 400px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-tip {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-sign {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 2rem;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 1.5rem;
+            width: 48px;
+            height: 48px;
+            background: var(--sage);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Utility */
+        .tag {
+            display: inline-block;
+            background: rgba(107,142,123,0.15);
+            color: var(--sage-dark);
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            margin-right: 0.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .facts-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .must-try-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .timeline {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>北九州之旅</h1>
+            <p class="subtitle">Discover Kitakyushu City</p>
+            <div class="dates">📅 2024.12.20 - 12.24</div>
+        </div>
+        <div class="scroll-hint">↓ 向下滑動瀏覽行程</div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#info">基本資訊</a>
+            <a href="#hotels">住宿</a>
+            <a href="#day1">Day 1</a>
+            <a href="#day2">Day 2</a>
+            <a href="#day3">Day 3</a>
+            <a href="#day4">Day 4</a>
+            <a href="#day5">Day 5</a>
+        </div>
+    </nav>
+
+    <!-- Fast Facts -->
+    <section class="fast-facts" id="info">
+        <h2 class="section-title">行前須知</h2>
+        <div class="facts-grid">
+            <div class="fact-card">
+                <div class="fact-icon">📍</div>
+                <div class="fact-label">地點</div>
+                <div class="fact-value">福岡・由布院<br>阿蘇・熊本</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-icon">🕐</div>
+                <div class="fact-label">時區</div>
+                <div class="fact-value">GMT+9<br>比台灣快1小時</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-icon">💴</div>
+                <div class="fact-label">貨幣</div>
+                <div class="fact-value">日幣<br>1 JPY ≈ 0.2 TWD</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-icon">📶</div>
+                <div class="fact-label">網路</div>
+                <div class="fact-value">實體SIM卡<br>5日吃到飽</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-icon">🔌</div>
+                <div class="fact-label">電壓</div>
+                <div class="fact-value">100V<br>雙扁腳插頭</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-icon">🛂</div>
+                <div class="fact-label">簽證</div>
+                <div class="fact-value">免簽證</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-icon">🚃</div>
+                <div class="fact-label">交通</div>
+                <div class="fact-value">Suica西瓜卡<br>綁定手機</div>
+            </div>
+            <div class="fact-card">
+                <div class="fact-icon">🗣️</div>
+                <div class="fact-label">語言</div>
+                <div class="fact-value">日文為主<br>翻譯軟體很方便</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hotels -->
+    <section class="hotels" id="hotels">
+        <h2 class="section-title">住宿安排</h2>
+        <div class="hotel-timeline">
+            <div class="hotel-card">
+                <div class="hotel-day">Day 1</div>
+                <div class="hotel-info">
+                    <h3>🏨 Hotel Bientos 鳥栖</h3>
+                    <p>〒841-0042 佐賀県鳥栖市酒井西町789-1</p>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-day">Day 2</div>
+                <div class="hotel-info">
+                    <h3>♨️ 由布院 UBL 飯店</h3>
+                    <p>〒879-5102 大分県由布市湯布院町川上1691-8</p>
+                </div>
+            </div>
+            <div class="hotel-card">
+                <div class="hotel-day">Day 4-5</div>
+                <div class="hotel-info">
+                    <h3>🏨 APA Hotel 博多駅筑紫口</h3>
+                    <p>〒812-0013 福岡県福岡市博多区博多駅東1丁目14番1号</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 1 -->
+    <section class="day-section" id="day1">
+        <div class="day-header">
+            <div class="day-number">Day 1</div>
+            <h2 class="day-title">抵達北九州福岡</h2>
+            <p class="day-subtitle">12/20 Arriving in Fukuoka</p>
+            <div class="day-weather">☀️ 福岡 13-21°C ｜ 鳥栖 11-20°C</div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-time">12:30 - 14:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🚗 出發前往桃園國際機場</div>
+                    <div class="timeline-note">爸媽：司機大哥 Steven 送機<br>妞華：搭機捷</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">14:00 - 16:25</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🛃 過海關、逛免稅、登機</div>
+                    <div class="timeline-note">桃園國際機場 第二航廈<br>✈️ 中華航空 CI116</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">16:25 - 19:35</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">✈️ 飛機飛高高</div>
+                    <div class="timeline-note">TPE → FUK｜航程約 2hr 10min</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">19:35 - 20:40</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🛬 入關</div>
+                    <div class="timeline-note">福岡國際機場 第一航廈</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">20:40 - 21:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🚕 搭計程車前往飯店</div>
+                    <div class="timeline-note">車程約 45 分鐘</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">21:30 - 22:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🏨 Check in</div>
+                    <div class="timeline-note">Hotel Bientos 鳥栖</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">22:00 - 23:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🍜 宵夜時間 (Optional)</div>
+                    <div class="timeline-note">三個選項可選</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="restaurants">
+            <h3 class="restaurants-title">🌙 宵夜選項</h3>
+            <div class="restaurant-card">
+                <div class="restaurant-name">本格炭火焼 焼人（やきびと）</div>
+                <div class="restaurant-meta">
+                    <span>💰 ¥4,000-5,000</span>
+                    <span>🕐 18:00-00:00</span>
+                </div>
+                <div class="restaurant-desc">居酒屋、烤雞肉串、中餐。時尚的店面與舒適的內部環境，可享受炭火燒烤的燒鳥和正宗中華料理！</div>
+            </div>
+            <div class="restaurant-card">
+                <div class="restaurant-name">さすらいのカンテキ 鳥栖酒場</div>
+                <div class="restaurant-meta">
+                    <span>💰 ¥3,000-4,000</span>
+                    <span>🕐 17:30-23:00</span>
+                </div>
+                <div class="restaurant-desc">居酒屋、燒肉、內臟類。可享受國產和牛內臟、燒肉及豐富酒品的大眾燒肉店。</div>
+            </div>
+            <div class="restaurant-card">
+                <div class="restaurant-name">四季の串揚げ 揚千</div>
+                <div class="restaurant-meta">
+                    <span>💰 ¥5,000-5,999</span>
+                    <span>🕐 17:00-23:00</span>
+                </div>
+                <div class="restaurant-desc">居酒屋、炸串、義大利料理。佐賀出產的純米酒，搭配每月更換的食材，享受串炸料理。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 2 -->
+    <section class="day-section" id="day2">
+        <div class="day-header">
+            <div class="day-number">Day 2</div>
+            <h2 class="day-title">由布院一日遊</h2>
+            <p class="day-subtitle">12/21 Day Tour at Yufuin</p>
+            <div class="day-weather">☁️ 鳥栖 11-13°C ｜ 由布院 12-14°C</div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-time">07:30 - 08:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🌅 起床、早餐</div>
+                    <div class="timeline-note">Hotel Bientos 鳥栖</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">08:30 - 09:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🚕 搭計程車前往車站</div>
+                    <div class="timeline-note">車程約 10 分鐘</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">09:00 - 09:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🎫 抵達鳥栖車站，先行取票</div>
+                    <div class="timeline-note">預定編號：66079<br>座位號：1號車 CD 5、6</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">09:43 - 11:31</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🚂 搭乘九州 JR 觀光列車</div>
+                    <div class="timeline-note">由布院之森 1 號｜鳥栖 → 由布院<br>車程 1hr 48min<br>金屬綠色的歐式風格，彷彿置身歐洲海外！</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">11:31 - 12:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🚌 交通＆寄放行李</div>
+                    <div class="timeline-note">搭 36 號公車約 19 分鐘<br>寄放行李至由布院 UBL 飯店</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">13:00 - 14:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🍱 午餐時間</div>
+                    <div class="timeline-note">首選「由布釜飯 心・金鱗湖本店」<br>釜飯三吃！</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">14:00 - 15:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🏮 湯之坪街道散步</div>
+                    <div class="timeline-note">由布院的核心區域<br>「溫泉街散步」氛圍<br>可邊走邊吃、小店好拍</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">15:30 - 16:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🍂 金鱗湖白天版 (Optional)</div>
+                    <div class="timeline-note">隔天早晨會看晨霧<br>想坐下喝咖啡可去</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">16:30 - 18:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🏡 Floral Village</div>
+                    <div class="timeline-note">小但可愛的「類英國村」<br>超多拍照點</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">18:00 - 19:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🍽️ 晚餐</div>
+                    <div class="timeline-note">午餐沒吃到的這餐吃！</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">19:30 -</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">♨️ 回飯店泡湯、休息</div>
+                    <div class="timeline-note">由布院 UBL 飯店</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spots">
+            <div class="spot-card">
+                <div class="spot-name">🌿 金鱗湖 Kinrinko Lake</div>
+                <div class="spot-desc">由布院溫泉旁的著名景點，以清晨湖面常出現夢幻晨霧、夕陽時湖面金光閃閃得名。同時有溫泉與冷泉注入，四季皆有不同美景，湖畔有散步道和咖啡館。</div>
+                <div class="spot-time">🌄 推薦清晨看晨霧（需<6°C才看得到）</div>
+            </div>
+        </div>
+
+        <div class="restaurants">
+            <h3 class="restaurants-title">🍽️ 餐廳選項</h3>
+            <div class="restaurant-card">
+                <div class="restaurant-name">由布釜飯 心・金鱗湖本店</div>
+                <div class="restaurant-meta">
+                    <span>💰 ¥2,000-3,000</span>
+                    <span>🕐 10:30-17:30</span>
+                </div>
+                <div class="restaurant-desc">釜飯、鰻魚/牛肉。豐後牛/地雞/鰻魚釜飯，可三吃：原味、配配料、加高湯。</div>
+            </div>
+            <div class="restaurant-card">
+                <div class="restaurant-name">山椒郎</div>
+                <div class="restaurant-meta">
+                    <span>💰 ¥2,000-9,000</span>
+                    <span>🕐 11:00-15:00 / 18:00-22:00</span>
+                </div>
+                <div class="restaurant-desc">日式料理、嚴選當地特色、季節時蔬。和食會席風格，擺盤漂亮、調味清爽，不油不鹹。</div>
+            </div>
+            <div class="restaurant-card">
+                <div class="restaurant-name">龜之井別莊湯之岳庵</div>
+                <div class="restaurant-meta">
+                    <span>💰 ¥4,000-5,000</span>
+                    <span>🕐 11:00-21:00</span>
+                </div>
+                <div class="restaurant-desc">金鱗湖景、當地當季食材、日本鄉土料理。就在金鱗湖旁邊，可以邊吃邊看湖，景色大加分。</div>
+            </div>
+        </div>
+
+        <div class="must-try">
+            <h3 class="must-try-title">❤️ 必吃美食</h3>
+            <div class="must-try-grid">
+                <div class="must-try-item">
+                    <div class="must-try-emoji">🍮</div>
+                    <div class="must-try-name">Milch 起司蛋糕</div>
+                    <div class="must-try-desc">獲獎無數！100%由布院產牛乳</div>
+                </div>
+                <div class="must-try-item">
+                    <div class="must-try-emoji">🍰</div>
+                    <div class="must-try-name">B-Speak 瑞士卷</div>
+                    <div class="must-try-desc">15公分長，原味跟巧克力口味</div>
+                </div>
+                <div class="must-try-item">
+                    <div class="must-try-emoji">🥞</div>
+                    <div class="must-try-name">鞠智 Cucuchi</div>
+                    <div class="must-try-desc">銅鑼燒、饅頭等精緻和菓子</div>
+                </div>
+                <div class="must-try-item">
+                    <div class="must-try-emoji">🍪</div>
+                    <div class="must-try-name">Lingon Cookies</div>
+                    <div class="must-try-desc">結合手工餅乾與雜貨的溫馨小店</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="must-try" style="margin-top: 1.5rem;">
+            <h3 class="must-try-title">🏡 Floral Village 推薦</h3>
+            <div class="must-try-grid">
+                <div class="must-try-item">
+                    <div class="must-try-emoji">🥔</div>
+                    <div class="must-try-name">金賞可樂餅</div>
+                    <div class="must-try-desc">人氣排隊小吃攤，現炸現吃不油不膩</div>
+                </div>
+                <div class="must-try-item">
+                    <div class="must-try-emoji">🐕</div>
+                    <div class="must-try-name">Snoopy 茶屋</div>
+                    <div class="must-try-desc">全日本第一間 SNOOPY 主題茶屋</div>
+                </div>
+                <div class="must-try-item">
+                    <div class="must-try-emoji">🐰</div>
+                    <div class="must-try-name">Miffy 森之廚房</div>
+                    <div class="must-try-desc">2層樓森林小屋，佈滿 Miffy！</div>
+                </div>
+                <div class="must-try-item">
+                    <div class="must-try-emoji">📸</div>
+                    <div class="must-try-name">拍照打卡</div>
+                    <div class="must-try-desc">可愛招牌、花草、動物造型裝飾</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 3 -->
+    <section class="day-section" id="day3">
+        <div class="day-header">
+            <div class="day-number">Day 3</div>
+            <h2 class="day-title">包車阿蘇熊本奢華一日遊</h2>
+            <p class="day-subtitle">12/22 Luxury Day Tour in Aso & Kumamoto</p>
+            <div class="day-weather">☀️ 由布院 2-12°C ｜ 阿蘇 -4-12°C ｜ 熊本 3-16°C ｜ 福岡 7-14°C</div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-time">06:00 - 06:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🌅 起床</div>
+                    <div class="timeline-note">由布院 UBL 飯店</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">06:30 - 07:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🌫️ 金鱗湖晨霧</div>
+                    <div class="timeline-note">步行約 15-20 分鐘<br>冬季由布院清晨必看（需<6°C才看得到）<br>前一天再決定是否有要去</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">08:00 - 10:50</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🍳 飯店休整、早餐</div>
+                    <div class="timeline-note">由布院 UBL 飯店</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">11:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🚗 包車一日遊開始</div>
+                    <div class="timeline-note">由布院 → 阿蘇 → 熊本 → 博多</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">11:00 - 12:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🚗 包車移動往阿蘇火山</div>
+                    <div class="timeline-note">車程約 1hr 30min</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">12:30 - 14:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🍱 午餐</div>
+                    <div class="timeline-note">新草千里景觀餐廳<br>必點熊本、阿蘇的和牛——赤牛<br>油脂比其他地域的和牛少</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">14:00 - 15:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🌋 阿蘇火山・草千里</div>
+                    <div class="timeline-note">阿蘇中嶽火山口（停留 20-30 min）<br>草千里（停留 20-30 min）<br>*如火山口散發指數超標，改去草千里</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">15:00 - 16:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🚗 包車移動往熊本城</div>
+                    <div class="timeline-note">車程約 1hr - 1hr 30min</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">16:00 - 17:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🏯 熊本城</div>
+                    <div class="timeline-note">日本三大名城之一<br>最晚進場時間 16:00</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">17:00 - 19:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🚗 包車移動往博多</div>
+                    <div class="timeline-note">車程約 2hr<br>APA Hotel 博多駅筑紫口</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">20:00 - 22:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🍜 晚餐</div>
+                    <div class="timeline-note">中洲屋台街</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spots">
+            <div class="spot-card">
+                <div class="spot-name">🌋 阿蘇火山・草千里</div>
+                <div class="spot-desc">阿蘇火山口是世界最大級的活火山之一，壯麗的地形與冒煙的火山景觀令人震撼。草千里位於阿蘇山中部，是一片廣闊無邊的綠色草原，景色壯麗如畫。</div>
+                <div class="spot-time">⏰ 預計停留：12:30 - 15:00 (2.5hr)</div>
+            </div>
+            <div class="spot-card">
+                <div class="spot-name">🏯 熊本城</div>
+                <div class="spot-desc">日本三大名城之一，以雄偉壯麗的天守閣聞名，別名「銀杏城」。天守閣內部展示已全面更新，在頂樓可以一覽熊本市區的景色。特別見學通路可近距離觀察受損的石牆和修復狀況。</div>
+                <div class="spot-time">⏰ 預計停留：16:00 - 17:00 (1hr)</div>
+            </div>
+            <div class="spot-card">
+                <div class="spot-name">🏮 中洲屋台街</div>
+                <div class="spot-desc">在美食之都博多，能夠深入體驗道地美食的就是中洲屋台街。拉麵、串物、關東煮等，可以搭配酒飲一起享用。建議換到下一家屋台的「續攤喝酒」方式會更有趣！</div>
+                <div class="spot-time">🍜 博多必吃：豚骨拉麵、炒拉麵、關東煮、烤串</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 4 -->
+    <section class="day-section" id="day4">
+        <div class="day-header">
+            <div class="day-number">Day 4</div>
+            <h2 class="day-title">福岡文化景點與聖誕市集</h2>
+            <p class="day-subtitle">12/23 Cultural Sites & Christmas Markets</p>
+            <div class="day-weather">☀️ 福岡 5-17°C ｜ 太宰府 3-17°C</div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-time">08:00 - 09:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🌅 起床、早餐</div>
+                    <div class="timeline-note">APA Hotel 博多駅筑紫口</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">09:00 - 10:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🚃 搭大眾運輸前往太宰府</div>
+                    <div class="timeline-note">車程約 35-45 分鐘</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">10:00 - 12:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">⛩️ 太宰府天滿宮</div>
+                    <div class="timeline-note">九州最有名的學問之神神社<br>建築很漂亮、參道兩側店鋪多，很適合慢走</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">12:30 - 14:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🍱 午餐</div>
+                    <div class="timeline-note">太宰府周邊</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">14:00 - 14:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🚃 搭大眾運輸</div>
+                    <div class="timeline-note">車程約 10 分鐘</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">14:30 - 16:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">⛩️ 寶滿宮 竈門神社</div>
+                    <div class="timeline-note">傳說是守護美貌並保佑姻緣的神明<br>也被奉為驅邪除魔之神<br>《鬼滅之刃》粉絲朝聖地！</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">16:00 - 17:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🚃 搭大眾運輸回博多</div>
+                    <div class="timeline-note">車程約 1 小時</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">17:00 - 18:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">⛩️ 櫛田神社</div>
+                    <div class="timeline-note">博多的「總鎮守」（最代表博多精神疼神社）<br>有超過千年歷史</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">18:00 -</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🎄 聖誕彩燈與市集巡禮</div>
+                    <div class="timeline-note">FESTA de SANTA：貴賓館前廣場，很多聖誕老人<br>中洲彩燈會場：中洲中央大道、中川大道等<br>天神聖誕市集：福岡市政府西側交流廣場</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="spots">
+            <div class="spot-card">
+                <div class="spot-name">⛩️ 太宰府天滿宮</div>
+                <div class="spot-desc">全日本約 12,000 座天滿宮的總本社。該神社供奉學問、文化及藝術之神菅原道真。御神牛像摸了可以帶來好運或智慧，表參道有許多商店和小吃店，最著名的當地名物是「梅枝餅」。</div>
+            </div>
+            <div class="spot-card">
+                <div class="spot-name">⛩️ 寶滿宮 竈門神社</div>
+                <div class="spot-desc">擁有超過 1300 年歷史的古老神社。近年來因其名稱與動漫《鬼滅之刃》主角姓氏相同，也成為粉絲的朝聖地。神社的授與所建築風格現代時尚，由知名設計師片山正通設計，是打卡熱點。</div>
+            </div>
+            <div class="spot-card">
+                <div class="spot-name">⛩️ 櫛田神社</div>
+                <div class="spot-desc">位於福岡市博多區的古老神社，被當地居民尊為「博多總鎮守」，有超過千年歷史，主要保佑商業繁榮與健康長壽。境內有「靈泉鶴之井」，相傳飲用此水能保佑長生不老。</div>
+            </div>
+        </div>
+
+        <div class="must-try">
+            <h3 class="must-try-title">🎄 2025 福岡聖誕市集</h3>
+            <div class="must-try-grid">
+                <div class="must-try-item">
+                    <div class="must-try-emoji">🎅</div>
+                    <div class="must-try-name">FESTA de SANTA</div>
+                    <div class="must-try-desc">貴賓館前廣場，很多聖誕老人造型</div>
+                </div>
+                <div class="must-try-item">
+                    <div class="must-try-emoji">✨</div>
+                    <div class="must-try-name">中洲彩燈會場</div>
+                    <div class="must-try-desc">中洲中央大道、福伯德藍橋</div>
+                </div>
+                <div class="must-try-item">
+                    <div class="must-try-emoji">🎪</div>
+                    <div class="must-try-name">天神聖誕市集</div>
+                    <div class="must-try-desc">福岡市政府西側交流廣場</div>
+                </div>
+                <div class="must-try-item">
+                    <div class="must-try-emoji">🍷</div>
+                    <div class="must-try-name">限定杯&蠟燭杯</div>
+                    <div class="must-try-desc">每個場地圖案都不一樣！</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 5 -->
+    <section class="day-section" id="day5">
+        <div class="day-header">
+            <div class="day-number">Day 5</div>
+            <h2 class="day-title">抓住最後的尾巴</h2>
+            <p class="day-subtitle">12/24 Hold on to the Tail of Vacation</p>
+            <div class="day-weather">☁️ 福岡 11-15°C</div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-time">08:00 - 10:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🌅 起床、早餐、Check out</div>
+                    <div class="timeline-note">APA Hotel 博多駅筑紫口</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">10:00 -</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🧳 寄放行李</div>
+                    <div class="timeline-note">*要去哪裡寄放就再查</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">- 12:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🛍️ 博多運河城逛街</div>
+                    <div class="timeline-note">Canal City Hakata</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">12:30 - 14:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🍱 午餐</div>
+                    <div class="timeline-note">柳川鰻魚飯 本吉屋 岩田屋店<br>柳川知名鰻魚飯專門店</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">14:00 - 17:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🛍️ 天神地下街逛街</div>
+                    <div class="timeline-note">最後血拼時間！</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">17:30 - 18:00</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🚃 出發前往福岡國際機場</div>
+                    <div class="timeline-note">車程約 15 分鐘</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">18:00 - 20:35</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🛃 過海關、逛免稅、登機</div>
+                    <div class="timeline-note">福岡國際機場 第一航廈<br>✈️ 中華航空 CI117</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">20:35 - 22:20</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">✈️ 飛機飛高高</div>
+                    <div class="timeline-note">FUK → TPE｜航程約 2hr 45min</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">22:20 - 23:30</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🛬 入關</div>
+                    <div class="timeline-note">桃園國際機場 第二航廈</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">-</div>
+                <div class="timeline-content">
+                    <div class="timeline-activity">🏠 Home Sweet Home</div>
+                    <div class="timeline-note">旅途結束，回家啦！</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h2 class="footer-title">旅途愉快！</h2>
+        <div class="footer-tips">
+            <div class="footer-tip">🙏 尊重當地文化，保持開放的心</div>
+            <div class="footer-tip">🏪 多支持小店和街頭攤販</div>
+            <div class="footer-tip">📸 分享你的體驗，或許能啟發他人的旅程</div>
+            <div class="footer-tip">📚 持續學習，這座城市變化很快！</div>
+        </div>
+        <div class="footer-sign">
+            Safe Travels - And See You On Your Next Adventure!<br>
+            <span style="opacity: 0.5; font-size: 0.8rem;">PhilGina Trip & Travel</span>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    <script>
+        // Back to top button visibility
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Active nav link
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
